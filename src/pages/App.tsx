@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./Layout";
-import Authentication from "./Authentication";
+import Authentication from "../features/Authentication/Authentication";
 
 function App() {
   return (

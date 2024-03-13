@@ -16,7 +16,13 @@ export interface InputField {
 }
 
 export interface AuthDataType {
+  name?: string;
   email: string;
   password: string;
   confirm_password?: string;
+}
+
+export interface UserDataType {
+  name: string;
+  email: string;
 }
