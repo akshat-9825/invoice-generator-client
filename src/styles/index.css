@@ -7,7 +7,11 @@ body {
   font-family: "Roboto", sans-serif;
   margin: 0;
   background-color: #e5e5e5;
-  min-height: 100vh;
+  height: 100vh;
+}
+
+#root {
+  height: 100vh;
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -17,6 +21,41 @@ body {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.styled_scrollbar {
+  overflow-y: hidden;
+  overflow-x: hidden;
+
+  @include tablet {
+    overflow-y: auto;
+  }
+}
+
+.styled_scrollbar:hover,
+.styled_scrollbar:active,
+.styled_scrollbar:focus {
+  overflow-y: auto;
+}
+
+.styled_scrollbar::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 4.5px;
+  width: 8px;
+  background-color: #555;
+}
+
+.styled_scrollbar::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 4.5px;
+  background-color: #555;
+}
+
+.styled_scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 4.5px;
+  border: 1px solid rgba(0, 0, 0, 0.63);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #ffffff;
 }
 
 @media print {

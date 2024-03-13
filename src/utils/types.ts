@@ -26,3 +26,15 @@ export interface UserDataType {
   name: string;
   email: string;
 }
+
+export interface ItemType {
+  productName: string;
+  price: number;
+  quantity: number;
+  total: number;
+}
+
+export interface ItemsState {
+  itemsList: ItemType[];
+  tax: number;
+}
