@@ -7,7 +7,7 @@ export const userApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL(),
     credentials: "include",
-    mode: "cors",
+    mode: "no-cors",
   }),
   endpoints: (builder) => ({
     getUser: builder.query<UserDataType, { token: string }>({
