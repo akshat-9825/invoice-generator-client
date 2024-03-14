@@ -17,7 +17,3 @@ Test on https://invoice-generator-client-nine.vercel.app/
 ## Authors
 
 - [@akshatdwivedi](https://www.github.com/akshat-9825)
-
-## License
-
-[MIT](https://github.com/akshat-9825/dropdown_component/blob/master/LICENSE)
