@@ -9,6 +9,7 @@ Client Side for Invoice Generator
 - React Framework on TypeScript using TailwindCSS
 - RTK Query for APIs
 - Integrated with Backend
+- User can download invoices, along with adding items, and changing tax value
 
 ## Try it out
 
