@@ -7,7 +7,7 @@ export const authApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL(),
     credentials: "include",
-    mode: "no-cors",
+    mode: "cors",
   }),
   endpoints: (builder) => ({
     login: builder.mutation<string, AuthDataType>({
