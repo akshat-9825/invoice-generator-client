@@ -148,9 +148,9 @@ const Authentication: React.FC<{ type: string }> = ({ type }) => {
   };
 
   return (
-    <div className="flex justify-center p-4">
+    <div className="flex justify-center p-4 h-full bg-gray-200">
       <ToastContainer />
-      <div className="mt-12 max-w-[640px] w-full bg-white p-4 rounded-[4px] ">
+      <div className="mt-12 max-w-[640px] w-full bg-white p-4 rounded-[4px] h-fit">
         <div className="text-2xl font-medium">
           Welcome to the Invoice Generator,
           <br />
