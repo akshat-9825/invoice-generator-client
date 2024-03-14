@@ -10,7 +10,7 @@ import {
 
 import "react-toastify/dist/ReactToastify.css";
 import { useAppDispatch } from "../../hooks";
-import { setRefetch } from "./authSlice";
+import { setRefetch, setToken } from "./authSlice";
 
 const authTexts: AuthTexts = {
   login: {
@@ -107,8 +107,11 @@ const Authentication: React.FC<{ type: string }> = ({ type }) => {
 
     if (type === "login") {
       try {
+        const response = await login(credentials).unwrap();
+        const token = response.token;
+        dispatch(setToken(token));
         await toast.promise(
-          login(credentials).unwrap(),
+          Promise.resolve(response),
           {
             pending: "Logging in...",
             success: "Login Successful!",

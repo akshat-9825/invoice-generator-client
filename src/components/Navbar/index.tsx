@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import useUser from "../../hooks/useUser";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import {
+  deleteToken,
   selectRefetch,
   setRefetch,
 } from "../../features/Authentication/authSlice";
 import { useLogoutMutation } from "../../apis/authentication";
-import { useEffect } from "react";
 
 const Navbar = () => {
   const { user, refetch } = useUser();
@@ -34,6 +35,7 @@ const Navbar = () => {
             onClick={() => {
               if (user.name) {
                 logout();
+                dispatch(deleteToken());
                 dispatch(setRefetch(true));
               }
             }}>

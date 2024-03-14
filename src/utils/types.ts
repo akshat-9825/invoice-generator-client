@@ -40,3 +40,14 @@ export interface ItemsState {
   itemsList: ItemType[];
   tax: number;
 }
+
+export interface AuthState {
+  refetchStatus: boolean;
+  token: string | null;
+}
+
+export interface LoginReturnType {
+  message: string;
+  name: string;
+  token: string;
+}

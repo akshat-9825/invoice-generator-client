@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { AuthDataType } from "../utils/types";
+import { AuthDataType, LoginReturnType } from "../utils/types";
 import { BASE_URL } from "../utils";
 
 export const authApi = createApi({
@@ -10,7 +10,7 @@ export const authApi = createApi({
     mode: "cors",
   }),
   endpoints: (builder) => ({
-    login: builder.mutation<string, AuthDataType>({
+    login: builder.mutation<LoginReturnType, AuthDataType>({
       query: (credentials) => ({
         url: "/auth/login",
         method: "POST",
