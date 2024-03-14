@@ -11,9 +11,12 @@ const Invoice = () => {
   const { tax } = useAppSelector(selectItemsData);
   const totalWithoutTax = useAppSelector(selectTotalCost);
   const totalWithTax = useAppSelector(selectTotalIncludingTax);
+  const currentDate = new Date();
+  const maxRelevantDate = new Date(currentDate);
+  maxRelevantDate.setDate(currentDate.getDate() + 10);
 
   return (
-    <div className="p-8 h-full w-full">
+    <div className="p-8 h-full w-full relative">
       <div className="text-2xl flex flex-row justify-between items-center">
         <span className="font-medium uppercase">Invoice Generator</span>
         <img src="images/levitation_logo.png" width="auto" height="auto" />
@@ -43,6 +46,17 @@ const Invoice = () => {
             <div className="text-blue-700 font-medium">INR {totalWithTax}</div>
           </div>
         </div>
+      </div>
+      <div className="text-xs mt-48 pl-4 text-left font-medium">
+        {`Valid until: ${maxRelevantDate.getDate()}/${
+          maxRelevantDate.getMonth() + 1
+        }/${maxRelevantDate.getFullYear()}`}
+      </div>
+      <div className="absolute bottom-8 rounded-full text-left px-8 text-xs font-medium w-[90%] bg-black text-gray-200 p-4">
+        Terms and Conditions <br />
+        We are happy to supply any further information you may need and trust
+        that you can call us to fill your order which will recieve our promt and
+        careful consideration d
       </div>
     </div>
   );
