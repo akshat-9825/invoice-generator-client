@@ -4,7 +4,7 @@ import { AuthDataType } from "../utils/types";
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:3000/api/v1",
+    baseUrl: process.env.REACT_APP_BASE_URL,
     credentials: "include",
   }),
   endpoints: (builder) => ({

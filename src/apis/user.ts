@@ -4,7 +4,7 @@ import { UserDataType } from "../utils/types";
 export const userApi = createApi({
   reducerPath: "userApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:3000/api/v1",
+    baseUrl: process.env.REACT_APP_BASE_URL,
     credentials: "include",
     mode: "cors",
   }),
