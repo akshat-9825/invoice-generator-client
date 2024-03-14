@@ -14,6 +14,8 @@ Client Side for Invoice Generator
 
 Test on https://invoice-generator-client-nine.vercel.app/
 
+Demo Video: https://youtu.be/RIK8F8Yei14
+
 ## Server Github Link
 
 https://github.com/akshat-9825/invoice-generator-server
