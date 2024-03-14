@@ -24,3 +24,7 @@ https://github.com/akshat-9825/invoice-generator-server
 ## Authors
 
 - [@akshatdwivedi](https://www.github.com/akshat-9825)
+
+## License
+
+[MIT](https://github.com/akshat-9825/invoice-generator-client/blob/main/LICENSE)
