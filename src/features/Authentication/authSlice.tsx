@@ -9,7 +9,9 @@ const initialState: AuthState = {
 
 export const authSlice = createSlice({
   name: "auth",
-  initialState: initialState,
+  initialState: localStorage.getItem("reduxState")
+    ? JSON.parse(localStorage.getItem("reduxState") as string).auth
+    : initialState,
   reducers: {
     setToken: (state, action) => {
       state.token = action.payload;
