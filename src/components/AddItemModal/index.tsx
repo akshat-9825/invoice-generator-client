@@ -6,9 +6,10 @@ import { ItemType } from "../../utils/types";
 import Modal from "../Modal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { generateId } from "../../utils";
 
 const inputFields = [
-  { label: "Product Name", name: "productName" },
+  { label: "Product Name", name: "productName", type: "text" },
   { label: "Quantity", name: "quantity", type: "number" },
   { label: "Price", name: "price", type: "number" },
 ];
@@ -20,6 +21,7 @@ const AddItemModal = ({
 }) => {
   const dispatch = useAppDispatch();
   const [formData, setFormData] = useState<ItemType>({
+    id: "",
     productName: "",
     quantity: 0,
     price: 0,
@@ -30,12 +32,16 @@ const AddItemModal = ({
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    const parsedValue =
+      name === "price" || name === "quantity" ? parseFloat(value) || 0 : value;
+    setFormData({ ...formData, [name]: parsedValue });
   };
 
-  const addItemBtn = () => {
+  const addItemBtn = (e: React.FormEvent) => {
+    e.preventDefault();
     if (
-      !formData.productName ||
+      formData.productName === "" ||
       formData.quantity <= 0 ||
       formData.price <= 0
     ) {
@@ -45,17 +51,19 @@ const AddItemModal = ({
           theme: "dark",
         }
       );
-      return;
+    } else {
+      const total = formData.quantity * formData.price;
+      const id = generateId();
+      dispatch(addItem({ ...formData, id, total }));
+      setFormData({
+        id: "",
+        productName: "",
+        price: 0,
+        quantity: 0,
+        total: 0,
+      });
+      setShowModal(false);
     }
-    const total = formData.quantity * formData.price;
-    dispatch(addItem({ ...formData, total }));
-    setFormData({
-      productName: "",
-      price: 0,
-      quantity: 0,
-      total: 0,
-    });
-    setShowModal(false);
   };
 
   return (
@@ -67,7 +75,9 @@ const AddItemModal = ({
           onClick={closeButton}>
           x
         </button>
-        <div className="flex flex-col w-4/5 mx-auto gap-4">
+        <form
+          onSubmit={addItemBtn}
+          className="flex flex-col w-4/5 mx-auto gap-4">
           {inputFields.map((field, index) => (
             <div
               key={index}
@@ -83,12 +93,10 @@ const AddItemModal = ({
               />
             </div>
           ))}
-        </div>
-        <button
-          className="bg-gray-800 hover:bg-gray-700 transition-all text-white p-2 mt-8 w-[60%] mx-auto"
-          onClick={addItemBtn}>
-          Add Item
-        </button>
+          <button className="bg-gray-800 hover:bg-gray-700 transition-all text-white p-2 mt-8 w-[60%] mx-auto">
+            Add Item
+          </button>
+        </form>
       </div>
     </Modal>
   );

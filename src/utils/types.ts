@@ -29,6 +29,7 @@ export interface UserDataType {
 
 export interface ItemType {
   [key: string]: string | number;
+  id: string;
   productName: string;
   price: number;
   quantity: number;

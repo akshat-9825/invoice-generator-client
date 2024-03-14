@@ -19,10 +19,19 @@ export const itemsSlice = createSlice({
     setTax: (state, action) => {
       state.tax = action.payload;
     },
+    deleteLastItem: (state) => {
+      state.itemsList.pop();
+    },
+    deleteById: (state, action) => {
+      state.itemsList = state.itemsList.filter(
+        (item: ItemType) => item.id !== action.payload
+      );
+    },
   },
 });
 
-export const { addItem, setTax } = itemsSlice.actions;
+export const { addItem, setTax, deleteLastItem, deleteById } =
+  itemsSlice.actions;
 
 const selectList = (state: RootState) => {
   return state.items.itemsList;

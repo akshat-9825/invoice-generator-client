@@ -18,8 +18,9 @@ const SetTaxModal = ({
     setShowModal(false);
   };
 
-  const handleSetTax = () => {
-    if (data < 0) {
+  const handleSetTax = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isNaN(data) || data < 0) {
       toast.error("Tax amount must be a positive number.", { theme: "dark" });
       return;
     }
@@ -37,23 +38,23 @@ const SetTaxModal = ({
           onClick={handleClose}>
           x
         </button>
-        <div className="flex flex-col w-4/5 mx-auto gap-4">
+        <form
+          onSubmit={handleSetTax}
+          className="flex flex-col w-4/5 mx-auto gap-4">
           <div className="flex flex-row gap-4 items-center justify-between">
             <span className="text-xl">Tax (%)</span>
             <input
               className="w-[60%] mt-1 px-2 border border-black bg-gray-100 h-10"
               placeholder="Enter Tax Percentage"
               type="number"
-              value={data}
+              value={data || ""}
               onChange={(e) => setData(parseFloat(e.target.value))}
             />
           </div>
-        </div>
-        <button
-          className="bg-gray-800 hover:bg-gray-700 transition-all text-white p-2 mt-8 w-[60%] mx-auto"
-          onClick={handleSetTax}>
-          Set Tax
-        </button>
+          <button className="bg-gray-800 hover:bg-gray-700 transition-all text-white p-2 mt-8 w-[60%] mx-auto">
+            Set Tax
+          </button>
+        </form>
       </div>
     </Modal>
   );
